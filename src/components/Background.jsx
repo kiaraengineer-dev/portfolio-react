@@ -22,8 +22,8 @@ const AnimatedBackground = () => {
 				const initialPos = initialPositions[index]
 
 				// Calculating movement in both X and Y direction
-				const xOffset = Math.sin(newScroll / 100 + index * 0.5) * 340 // Horizontal movement
-				const yOffset = Math.cos(newScroll / 100 + index * 0.5) * 40 // Vertical movement
+				const xOffset = Math.sin(newScroll / 100 + index * 0.5) * 340 
+				const yOffset = Math.cos(newScroll / 100 + index * 0.5) * 40 
 
 				const x = initialPos.x + xOffset
 				const y = initialPos.y + yOffset

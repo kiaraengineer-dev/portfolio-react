@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
+/*import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { MessageCircle, UserCircle2, Loader2, AlertCircle, Send, ImagePlus, X, Pin } from 'lucide-react';
 import AOS from "aos";
@@ -405,7 +405,7 @@ const Komentar = () => {
                 </div>
 
                 <div className="space-y-4 h-[328px] overflow-y-auto overflow-x-hidden custom-scrollbar pt-1 pr-1 " data-aos="fade-up" data-aos-delay="200">
-                    {/* Pinned Comment */}
+                   
                     {pinnedComment && (
                         <div data-aos="fade-down" data-aos-duration="800">
                             <Comment 
@@ -417,8 +417,8 @@ const Komentar = () => {
                         </div>
                     )}
                     
-                    {/* Regular Comments */}
-                    {comments.length === 0 && !pinnedComment ? (
+                   
+                   /* {comments.length === 0 && !pinnedComment ? (
                         <div className="text-center py-8" data-aos="fade-in">
                             <UserCircle2 className="w-12 h-12 text-indigo-400 mx-auto mb-3 opacity-50" />
                             <p className="text-gray-400">No comments yet. Start the conversation!</p>
@@ -456,4 +456,4 @@ const Komentar = () => {
     );
 };
 
-export default Komentar;
+*/export default Komentar;

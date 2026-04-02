@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  // Helper function to generate input classes dynamically
+  
   const getInputClasses = (isTextArea = false) => {
     const baseClasses = `
       w-full p-4 rounded-xl bg-white/10 text-white placeholder-transparent 
@@ -18,7 +18,7 @@ const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
     return `${baseClasses} ${hoverFocusClasses} ${isTextArea ? "h-52 pt-12" : "pl-12"}`;
   };
 
-  // Render input or textarea based on the field type
+  
   const renderInputContent = () => {
     if (field === "message") {
       return (
@@ -54,7 +54,7 @@ const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
 
   return (
     <div className="relative w-full group">
-      {/* Icon and Label */}
+      
       <div className="absolute left-4 top-4 flex items-center space-x-2 text-gray-400 transition-colors group-hover:text-[#6366f1]">
         <Icon className="w-5 h-5" />
         <label
@@ -70,10 +70,10 @@ const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
         </label>
       </div>
 
-      {/* Input or Textarea */}
+     
       {renderInputContent()}
 
-      {/* Focus/Hover Border Effect */}
+      
       <div
         className={`
           absolute inset-0 border rounded-xl pointer-events-none 
