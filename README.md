@@ -1,48 +1,63 @@
-# Portfólio_Kiara Toster
+# 💻 Portfólio - Kiara Toster
 
-Olá a todos! 👋
+Olá! 👋  
+Sou a Kiara, estudante de Engenharia de Software com foco em desenvolvimento Front-End.
 
-Deixe-me me apresentar, eu sou Kiara Toster. Nesta ocasião, gostaria de compartilhar o projeto de website de portfólio que desenvolvi.
+Este projeto foi desenvolvido para apresentar meus projetos, certificados e evolução como desenvolvedora, com foco em design moderno, responsividade e experiência do usuário.
 
-## Demonstração ao Vivo
 
-**Link do Site:** [https://seu-link-aqui.com/](https://seu-link-aqui.com/)
 
-## Tecnologias Utilizadas
+## ✨ Funcionalidades
 
-Este projeto foi construído utilizando tecnologias modernas de desenvolvimento web:
+- 📱 Design totalmente responsivo (mobile, tablet e desktop)  
+- 🎯 Interface moderna e intuitiva  
+- ⚡ Navegação entre páginas  
+- 🎬 Animações e transições suaves  
+- 📂 Exibição de projetos e certificados  
 
-- **ReactJS** - Framework Frontend
-- **Tailwind CSS** - Framework CSS utilitário
-- **Supabase** - Backend para dados do portfólio e certificados
-- **AOS** - Biblioteca de animação ao rolar a página (Animate On Scroll)
-- **Framer Motion** - Biblioteca de animações
-- **Lucide** - Biblioteca de ícones
-- **Material UI** - Biblioteca de componentes React
-- **SweetAlert2** - Diálogos de alerta personalizados
+
+
+
+## 🛠️ Tecnologias utilizadas
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=react,js,tailwind,vite" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/AOS-Animation-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-black?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/Lucide%20Icons-gray?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
+  <img src="https://img.shields.io/badge/SweetAlert2-ff69b4?style=for-the-badge" />
+</p>
+
+
+<br>
+
+## 📸 Preview (Imagem)
+
+![preview](./public/preview-img.png)
+
+<br>
 
 ## 📋 Pré-requisitos
 
-Antes de rodar este projeto, certifique-se de ter instalado:
+Antes de começar, você precisa ter instalado:
 
-- **Node.js** (versão 14.x ou superior)
-- Gerenciador de pacotes **npm** ou **yarn**
+- Node.js (versão 14 ou superior)  
+- npm ou yarn  
 
-## Começando
 
-Siga estes passos para rodar o projeto localmente:
 
-### 1. Clonar o Repositório
+## ⚙️ Clonar e instalar
 
-```bash
-git clone https://github.com/SEU_USUARIO/Portofolio_V5.git
-cd Portofolio_V5
-
-```
-
-### 2. Instalar Dependências
+### 1. Clone o repositório
 
 ```bash
+git clone https://github.com/kiaraengineer-dev/portfolio-react.git
+cd portfolio-react
 npm install
 
 ```
@@ -54,40 +69,21 @@ npm install --legacy-peer-deps
 
 ```
 
-### 3. Rodar o Servidor de Desenvolvimento
 
-```bash
-npm run dev
-
-```
-
-### 4. Abrir no Navegador
-
-Acesse a aplicação através do link exibido no seu terminal (geralmente `http://localhost:5173`).
-
-## 🏗️ Gerando a Build de Produção
-
-Para criar uma versão pronta para publicação:
-
-1. Rode o comando de build:
-
-```bash
-npm run build
-
-```
-
-2. Os arquivos gerados serão salvos na pasta `dist`. Faça o upload desta pasta para o seu servidor de hospedagem.
 
 ## ⚙️ Configuração (Supabase)
 
 Os dados do backend para este projeto (projetos e certificados) são gerenciados pelo Supabase.
+
 
 ### 1. Criar Projeto no Supabase
 
 - Vá para o [Supabase](https://supabase.com/) e crie um novo projeto.
 - Copie sua **Project URL** e sua **anon public key**. Você as encontra em **Settings > API**.
 
-### 2. Configurar Tabelas e Políticas
+
+
+### 2.0 Configurar Tabelas e Políticas
 
 Execute o seguinte script SQL no **SQL Editor** do seu Supabase. Isso configurará as tabelas e políticas de segurança necessárias.
 
@@ -123,17 +119,178 @@ CREATE POLICY "Acesso público de leitura para Certificados" ON public.certifica
 
 ```
 
-## Configuração de Variáveis de Ambiente
 
-Crie um arquivo chamado `.env` na raiz do seu projeto e adicione suas credenciais do Supabase.
+## 2.1 Variáveis ​​de Ambiente
 
-```env
-
-# Configuração do Supabase
+```bash
+Crie um arquivo .env na raiz do projeto:
 VITE_SUPABASE_URL=sua-url-do-supabase
-VITE_SUPABASE_ANON_KEY=sua-chave-anon-do-supabase
+VITE_SUPABASE_ANON_KEY=sua-chave-anon
 
 ```
+Encontre essas informações no seu projeto Supabase em Configurações → API.
+
+⚠️ Nunca faça commits .env no controle de versão — certifique-se de que estejam em .gitignore.
+
+
+
+## 2.2 Cliente Supabase (src/supabase.js)
+
+```bash
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Credenciais do Supabase não encontradas. Verifique o arquivo .env')
+}
+
+export const supabase = createClient(supabaseUrl, supabaseKey)
+
+```
+
+
+### 3.0🗄️ Configuração do Banco de Dados
+
+Acesse o painel do Supabase → SQL Editor, Execute o script abaixo (apenas uma vez):
+OBS: A pasta de comments foi apagada desse projeto.
+
+```bash
+
+-- ============================
+-- TABELAS
+-- ============================
+CREATE TABLE public.projects (
+  id bigint GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+  title text,
+  description text,
+  img text,
+  link text,
+  github text,
+  features jsonb,
+  tech_stack jsonb,
+  is_published boolean DEFAULT true,
+  order_index int DEFAULT 0,
+  created_at timestamptz DEFAULT now()
+);
+
+CREATE TABLE public.certificates (
+  id bigint GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+  img text,
+  created_at timestamptz DEFAULT now()
+);
+
+CREATE TABLE public.portfolio_comments (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  content text NOT NULL,
+  user_name text NOT NULL,
+  profile_image text,
+  is_pinned boolean DEFAULT false,
+  created_at timestamptz DEFAULT now()
+);
+
+CREATE TABLE public.profiles (
+  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  username text UNIQUE NOT NULL,
+  role text NOT NULL CHECK (role IN ('admin', 'user')),
+  created_at timestamptz DEFAULT now()
+);
+
+-- ============================
+-- SEGURANÇA (RLS)
+-- ============================
+ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.certificates ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.portfolio_comments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Leitura pública de projetos"
+ON public.projects FOR SELECT USING (true);
+
+CREATE POLICY "Leitura pública de certificados"
+ON public.certificates FOR SELECT USING (true);
+
+CREATE POLICY "Leitura pública de comentários"
+ON public.portfolio_comments FOR SELECT USING (true);
+
+CREATE POLICY "Inserção pública de comentários"
+ON public.portfolio_comments FOR INSERT
+WITH CHECK (is_pinned = false);
+
+CREATE POLICY "Admin gerencia projetos"
+ON public.projects FOR ALL
+USING (
+  EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  )
+);
+
+CREATE POLICY "Admin gerencia certificados"
+ON public.certificates FOR ALL
+USING (
+  EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  )
+);
+
+CREATE POLICY "Admin gerencia comentários"
+ON public.portfolio_comments FOR UPDATE, DELETE
+USING (
+  EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  )
+);
+
+-- ============================
+-- STORAGE
+-- ============================
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('project-images', 'project-images', true)
+ON CONFLICT DO NOTHING;
+
+CREATE POLICY "Admin envia imagens de projetos"
+ON storage.objects FOR INSERT
+WITH CHECK (
+  bucket_id = 'project-images'
+  AND EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  )
+);
+
+CREATE POLICY "Leitura pública imagens de projetos"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'project-images');
+
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('certificate-images', 'certificate-images', true)
+ON CONFLICT DO NOTHING;
+
+CREATE POLICY "Admin envia imagens de certificados"
+ON storage.objects FOR INSERT
+WITH CHECK (
+  bucket_id = 'certificate-images'
+  AND EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND role = 'admin'
+  )
+);
+
+CREATE POLICY "Leitura pública imagens de certificados"
+ON storage.objects FOR SELECT
+USING (bucket_id = 'certificate-images');
+
+```
+
+
+### 4.0 Abrir no Navegador
+
+Acesse a aplicação através do link exibido no seu terminal (geralmente `http://localhost:5173`).
+
 
 **Importante:**
 
@@ -141,7 +298,9 @@ VITE_SUPABASE_ANON_KEY=sua-chave-anon-do-supabase
 - Reinicie o servidor de desenvolvimento após criar ou modificar o arquivo `.env`.
 - **Nunca** envie seu arquivo `.env` para o GitHub. Certifique-se de que ele está listado no seu arquivo `.gitignore`.
 
-## 🚨 Solução de Problemas
+
+
+## Solução de Problemas
 
 Se encontrar problemas ao rodar o projeto:
 
@@ -151,19 +310,16 @@ Se encontrar problemas ao rodar o projeto:
 - Verifique se as credenciais no `.env` estão corretas e se o servidor foi reiniciado.
 - Limpe o cache do navegador e tente novamente.
 
-## Uso e Créditos
 
-Agradecemos se decidir usar este projeto. Por favor, inclua os créditos apropriados ao utilizá-lo. Obrigado! 🙏
+
 
 ## Contato
 
 Se tiver dúvidas ou precisar de ajuda com a configuração, sinta-se à vontade para entrar em contato!
 
-**Kiara Toster**
-
 - Website: [https://seu-site.com/](https://seu-site.com/)
 - GitHub: [SeuUsuario](https://www.google.com/search?q=https://github.com/SeuUsuario)
+- E-mail: 
 
----
 
 ⭐ Se este projeto te ajudou, considere dar uma estrela no GitHub!
