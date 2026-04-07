@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { supabase } from "../supabase";
 
 import PropTypes from "prop-types";
-import SwipeableViews from "react-swipeable-views";
+
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
@@ -140,7 +140,6 @@ export default function FullWidthTabs() {
 
   const fetchData = useCallback(async () => {
     try {
-      
       const [projectsResponse, certificatesResponse] = await Promise.all([
         supabase.from("projects").select("*").order("id", { ascending: true }),
         supabase
@@ -149,7 +148,6 @@ export default function FullWidthTabs() {
           .order("id", { ascending: true }),
       ]);
 
-     
       if (projectsResponse.error) throw projectsResponse.error;
       if (certificatesResponse.error) throw certificatesResponse.error;
 
@@ -169,7 +167,6 @@ export default function FullWidthTabs() {
   }, []);
 
   useEffect(() => {
-    
     const cachedProjects = localStorage.getItem("projects");
     const cachedCertificates = localStorage.getItem("certificates");
 
@@ -178,7 +175,7 @@ export default function FullWidthTabs() {
       setCertificates(JSON.parse(cachedCertificates));
     }
 
-    fetchData(); 
+    fetchData();
   }, [fetchData]);
 
   const handleChange = (event, newValue) => {
@@ -233,7 +230,6 @@ export default function FullWidthTabs() {
       </div>
 
       <Box sx={{ width: "100%" }}>
-        
         <AppBar
           position="static"
           elevation={0}
@@ -258,7 +254,6 @@ export default function FullWidthTabs() {
           }}
           className="md:px-4"
         >
-          
           <Tabs
             value={value}
             onChange={handleChange}
