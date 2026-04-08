@@ -179,7 +179,7 @@ export default function FullWidthTabs() {
   };
 
   const toggleShowMore = useCallback((type) => {
-    if (type === "projects") {
+    if (type === "projetos") {
       setShowAllProjects((prev) => !prev);
     } else {
       setShowAllCertificates((prev) => !prev);
@@ -318,17 +318,6 @@ export default function FullWidthTabs() {
           </Tabs>
         </AppBar>
 
-        <div>
-          {models.map(
-            (model, index) =>
-              value === index && (
-                <div key={index}>
-                  <h1>{model.name}</h1>
-                </div>
-              ),
-          )}
-        </div>
-
         <TabPanel value={value} index={0} dir={theme.direction}>
           <div className="container mx-auto flex justify-center items-center overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
@@ -361,7 +350,7 @@ export default function FullWidthTabs() {
             <div className="mt-6 w-full flex justify-start">
               <ToggleButton
                 onClick={() => toggleShowMore("projetos")} //mudei aqui o nome projeto
-                isShowingMore={showAllProjetos}
+                isShowingMore={showAllProjects} //mudei aqui o nome projeto
               />
             </div>
           )}
