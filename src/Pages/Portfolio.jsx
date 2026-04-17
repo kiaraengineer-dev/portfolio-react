@@ -103,7 +103,7 @@ function a11yProps(index) {
   };
 }
 
-// techStacks tetap sama
+// techStacks
 const techStacks = [
   { icon: "html.svg", language: "HTML" },
   { icon: "css.svg", language: "CSS" },
@@ -148,7 +148,6 @@ export default function FullWidthTabs() {
       if (projectsResponse.error) throw projectsResponse.error;
       if (certificatesResponse.error) throw certificatesResponse.error;
 
-      // Supabase mengembalikan data dalam properti 'data'
       const projectData = projectsResponse.data || [];
       const certificateData = certificatesResponse.data || [];
 
@@ -163,13 +162,9 @@ export default function FullWidthTabs() {
   }, []);
 
   useEffect(() => {
-    const cachedProjects = localStorage.getItem("projects");
-    const cachedCertificates = localStorage.getItem("certificates");
-
-    if (cachedProjects && cachedCertificates) {
-      setProjects(JSON.parse(cachedProjects));
-      setCertificates(JSON.parse(cachedCertificates));
-    }
+    // Limpa cache antigo para sempre pegar dados frescos do aquiiiiii
+    localStorage.removeItem("projects");
+    localStorage.removeItem("certificates");
 
     fetchData();
   }, [fetchData]);
@@ -199,7 +194,7 @@ export default function FullWidthTabs() {
       className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden"
       id="portfolio"
     >
-      {/* Header section - unchanged */}
+      {/* Header section - */}
       <div
         className="text-center pb-10"
         data-aos="fade-up"

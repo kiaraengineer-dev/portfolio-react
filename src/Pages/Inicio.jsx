@@ -4,8 +4,6 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
-
 const StatusBadge = memo(() => (
   <div
     className="inline-block animate-float lg:mx-0"
@@ -264,7 +262,6 @@ const Inicio = () => {
               </div>
             </div>
 
-            
             <div
               className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
               onMouseEnter={() => setIsHovering(true)}

@@ -1,4 +1,5 @@
 import React, { useEffect, memo, useMemo } from "react";
+import React, { useEffect, useState, memo, useMemo } from "react";
 import {
   FileText,
   Code,
@@ -130,29 +131,35 @@ const StatCard = memo(
 //Página
 
 const SobrePage = () => {
-  const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    const storedCertificates = JSON.parse(
-      localStorage.getItem("certificates") || "[]",
-    );
+  const [totalProjects, setTotalProjects] = useState(0);
+  const [totalCertificates, setTotalCertificates] = useState(0);
 
-    //Data de experiencia
+  const startDate = new Date("2024, 7, 7");
+  const today = new Date();
+  const YearExperience =
+    today.getFullYear() -
+    startDate.getFullYear() -
+    (today <
+    new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate())
+      ? 1
+      : 0);
 
-    const startDate = new Date("2024, 7, 7");
-    const today = new Date();
-    const experience =
-      today.getFullYear() -
-      startDate.getFullYear() -
-      (today <
-      new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate())
-        ? 1
-        : 0);
-
-    return {
-      totalProjects: storedProjects.length,
-      totalCertificates: storedCertificates.length,
-      YearExperience: experience,
+  useEffect(() => {
+    const updateCounts = () => {
+      const storedProjects = JSON.parse(
+        localStorage.getItem("projects") || "[]",
+      );
+      const storedCertificates = JSON.parse(
+        localStorage.getItem("certificates") || "[]",
+      );
+      setTotalProjects(storedProjects.length);
+      setTotalCertificates(storedCertificates.length);
     };
+
+    updateCounts();
+
+    window.addEventListener("storage", updateCounts);
+    return () => window.removeEventListener("storage", updateCounts);
   }, []);
 
   useEffect(() => {
@@ -282,7 +289,7 @@ const SobrePage = () => {
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
               <a
-                href="https://drive.google.com/file/d/1qWb5seskeRFINF2HBEx_gXTdmQfkBPHE/view?usp=sharing"
+                href="https://drive.google.com/file/d/18-LcQy6GHF0R6u4CK-ZrbMCriVvAGC-E/view"
                 className="w-full lg:w-auto"
               >
                 <button
