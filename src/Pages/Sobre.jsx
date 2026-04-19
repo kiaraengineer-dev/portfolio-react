@@ -1,4 +1,5 @@
 import React, { useEffect, useState, memo, useMemo } from "react";
+import { supabase } from "../supabase";
 import {
   FileText,
   Code,
