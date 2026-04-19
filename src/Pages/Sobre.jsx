@@ -145,21 +145,17 @@ const SobrePage = () => {
       : 0);
 
   useEffect(() => {
-    const updateCounts = () => {
-      const storedProjects = JSON.parse(
-        localStorage.getItem("projects") || "[]",
-      );
-      const storedCertificates = JSON.parse(
-        localStorage.getItem("certificates") || "[]",
-      );
-      setTotalProjects(storedProjects.length);
-      setTotalCertificates(storedCertificates.length);
+    const fetchCounts = async () => {
+      const [projectsResponse, certificatesResponse] = await Promise.all([
+        supabase.from("projects").select("*"),
+        supabase.from("certificates").select("*"),
+      ]);
+
+      setTotalProjects(projectsResponse.data?.length || 0);
+      setTotalCertificates(certificatesResponse.data?.length || 0);
     };
 
-    updateCounts();
-
-    window.addEventListener("storage", updateCounts);
-    return () => window.removeEventListener("storage", updateCounts);
+    fetchCounts();
   }, []);
 
   useEffect(() => {
