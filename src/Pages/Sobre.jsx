@@ -1,4 +1,3 @@
-import React, { useEffect, memo, useMemo } from "react";
 import React, { useEffect, useState, memo, useMemo } from "react";
 import {
   FileText,
@@ -289,7 +288,7 @@ const SobrePage = () => {
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
               <a
-                href="https://drive.google.com/file/d/18-LcQy6GHF0R6u4CK-ZrbMCriVvAGC-E/view"
+                href="https://drive.google.com/file/d/1wtyDlhLS81Rb1OIAkfD7EKjESUtlgU9x/view?usp=drive_link"
                 className="w-full lg:w-auto"
               >
                 <button

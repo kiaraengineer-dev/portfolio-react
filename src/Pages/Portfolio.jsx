@@ -188,7 +188,7 @@ export default function FullWidthTabs() {
     ? certificates
     : certificates.slice(0, initialItems);
 
-  // Sisa dari komponen (return statement) tidak ada perubahan
+  
   return (
     <div
       className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden"
